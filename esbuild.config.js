@@ -1,12 +1,12 @@
 import esBuild from "esbuild";
 import path from 'path';
+import sassPlugin from 'esbuild-plugin-sass';
 import { fileURLToPath } from 'url';
 import { Server } from "@olefjaerestad/hmr";
 
 const NODE_ENV = JSON.stringify(process.env.NODE_ENV);
 const IS_PROD = NODE_ENV === '"production"';
 const IS_DEV = NODE_ENV === '"development"';
-// const IS_TEST = NODE_ENV === '"test"';
 
 const BUILD_OPTIONS = {
   bundle: true,
@@ -14,15 +14,14 @@ const BUILD_OPTIONS = {
     '__NODE_ENV__': NODE_ENV,
     'process.env.NODE_ENV': NODE_ENV
   },
-  entryPoints: ['src/index.tsx', 'src/style.css'],
+  entryPoints: ['src/index.tsx', 'src/style.scss'],
   incremental: !IS_PROD,
-  loader: {
-    '.ttf': 'file'
-  },
   minify: IS_PROD,
   outdir: IS_PROD ? 'build' : 'dev',
+  plugins: [
+    sassPlugin(),
+  ],
   sourcemap: !IS_PROD,
-  // target: ['chrome58', 'firefox57', 'safari11', 'edge16'],
 }
 
 if (IS_DEV) { 
@@ -39,11 +38,9 @@ if (IS_DEV) {
 
   hmrServer.addEventListener('change', (e) => {
     let changedFile = e.value.filename;
-    const isCssChange = changedFile.endsWith('.css');
+    const isCssChange = changedFile.endsWith('.scss');
     
-    if (isCssChange && e.value.filepath.includes('/src/components')) {
-      changedFile = 'index.css';
-    } else if (isCssChange) {
+    if (isCssChange) {
       changedFile = 'style.css';
     }
 
@@ -54,7 +51,8 @@ if (IS_DEV) {
           type: 'change',
           filename: changedFile,
         });
-      });
+      })
+      .catch((e) => console.error(e.message));
   });
 } else {
   // @ts-ignore: No overload matches this call.

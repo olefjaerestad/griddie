@@ -1,0 +1,12 @@
+.cell {
+  border: 1px solid rgb(54, 177, 214); /* TODO: Remove */
+}
+
+/* TODO: cell span for different breakpoints. */
+@each $name, $breakpoint in $breakpoints {
+  @media (min-width: $breakpoint) {
+    .cell--#{$name} {
+      border-color: orange;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.grid {
+  --rows: 12;
+  --columns: 12;
+
+  display: grid;
+  border: 2px solid palevioletred; /* TODO: Remove */
+}
+
+.grid--x {
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.grid--y {
+  grid-template-rows: repeat(var(--columns), 1fr);
+}

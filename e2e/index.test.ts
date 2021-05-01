@@ -31,8 +31,10 @@ afterEach(async () => {
 describe('Basic layout', () => {
   it('DOM should contain an element with id="app"', async () => {
     await page.goto(WEBSERVER_URL);
-    const hasAppNode = await page.isVisible('#app');
-    expect(hasAppNode).toBe(true); // Note: Runtime errors on the page might cause this to fail.
+    const hasGridNode = await page.isVisible('.grid');
+    const hasCellNode = await page.isVisible('.cell');
+    expect(hasGridNode).toBe(true); // Note: Runtime errors on the page might cause this to fail.
+    expect(hasCellNode).toBe(true);
     await page.screenshot({path: `${SCREENSHOTS_PATH}/example.png`});
   });
 });
