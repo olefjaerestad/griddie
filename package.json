@@ -46,7 +46,7 @@
     "dev": "npm run rebuild:static:dev && NODE_ENV=\"development\" concurrently \"node scripts/dev.js\" \"tsc -w\" \"node esbuild.config.js\"",
     "test": "npm run test:unit && npm run test:e2e",
     "test:e2e": "npm run rebuild:static:dev && NODE_ENV=\"test\" node esbuild.config.js && jest e2e",
-    "test:unit": "jest src",
+    "test:unit": "jest src --passWithNoTests",
     "prepare": "husky install",
     "rebuild:static:dev": "npm run clean:dev && npm run create:dev && npm run copy:static:dev",
     "storybook": "start-storybook -p 6006",
