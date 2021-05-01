@@ -1,0 +1,4 @@
+.appTitle {
+  color: hsl(0, 100%, 100%);
+  background-color: var(--color-primary);
+}

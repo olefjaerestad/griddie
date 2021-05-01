@@ -1,0 +1,5 @@
+.DS_Store
+build
+dev
+node_modules
+e2e/screenshots

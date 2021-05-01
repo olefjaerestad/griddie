@@ -1,0 +1,77 @@
+{
+  "author": "Ole Kristian Fjaerestad",
+  "bugs": {
+    "url": "https://github.com/olefjaerestad/react-client-side-template/issues"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "typesafe-actions": "^5.1.0"
+  },
+  "description": "Template repository for react client side projects.",
+  "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-typescript": "^7.13.0",
+    "@olefjaerestad/hmr": "0.0.10",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
+    "@types/jest": "^26.0.20",
+    "@types/react-dom": "^17.0.1",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "concurrently": "^6.0.0",
+    "esbuild": "^0.8.52",
+    "fastify": "^3.12.0",
+    "fastify-static": "^4.0.1",
+    "husky": "^5.1.3",
+    "jest": "^26.6.3",
+    "playwright": "^1.9.1",
+    "typescript": "^4.2.2"
+  },
+  "homepage": "https://github.com/olefjaerestad/react-client-side-template#readme",
+  "keywords": [
+    "react",
+    "typescript",
+    "esbuild",
+    "fastify",
+    "@olefjaerestad/hmr",
+    "jest",
+    "playwright",
+    "storybook"
+  ],
+  "license": "MIT",
+  "main": "build/index.js",
+  "name": "react-client-side-template",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olefjaerestad/react-client-side-template.git"
+  },
+  "scripts": {
+    "build": "npm run clean:prod && tsc && NODE_ENV=\"production\" node esbuild.config.js && npm run copy:static:prod",
+    "clean:dev": "rm -rf dev",
+    "clean:prod": "rm -rf build",
+    "copy:static:dev": "cp src/index.html dev",
+    "copy:static:prod": "cp src/index.html build",
+    "create:dev": "mkdir dev",
+    "dev": "npm run rebuild:static:dev && NODE_ENV=\"development\" concurrently \"node scripts/dev.js\" \"tsc -w\" \"node esbuild.config.js\"",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:e2e": "npm run rebuild:static:dev && NODE_ENV=\"test\" node esbuild.config.js && jest e2e",
+    "test:unit": "jest src",
+    "prepare": "husky install",
+    "rebuild:static:dev": "npm run clean:dev && npm run create:dev && npm run copy:static:dev",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "type": "module",
+  "version": "0.0.1"
+}
