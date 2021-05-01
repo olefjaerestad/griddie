@@ -2,11 +2,26 @@
   border: 1px solid rgb(54, 177, 214); /* TODO: Remove */
 }
 
-/* TODO: cell span for different breakpoints. */
+@for $i from 1 through $maxColumns {
+  .grid--x .cell--#{$i} {
+    grid-column: span $i;
+  }
+}
+@for $i from 1 through $maxRows {
+  .grid--y .cell--#{$i} {
+    grid-row: span $i;
+  }
+}
+/* .cell span for different breakpoints: */
 @each $name, $breakpoint in $breakpoints {
-  @media (min-width: $breakpoint) {
-    .cell--#{$name} {
-      border-color: orange;
+  @for $i from 1 through $maxColumns {
+    @media (min-width: $breakpoint) {
+      .grid--x .cell--#{$name}--#{$i} {
+        grid-column: span $i;
+      }
+      .grid--y .cell--#{$name}--#{$i} {
+        grid-row: span $i;
+      }
     }
   }
 }

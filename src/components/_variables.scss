@@ -3,16 +3,32 @@
  */
 /*
 .grid {
+   // Overwrite this to change the number of columns in a grid. Should never exceed $maxColumns.
+   --columns: 12;
+   // Overwrite this to change the number of rows in a grid. Should never exceed $maxRows.
   --rows: 12;
-  --columns: 12;
 }
 */
 
 /**
  * Sass variables and their default values.
  */
+
+/*
+ * Used to generate .cell classes, e.g. `.cell--md--4`.
+ * You can add/remove as many breakpoints as you need here.
+ * More breakpoints = larger file size.
+ */
 $breakpoints: (
   'sm': 480px,
   'md': 720px,
   'lg': 960px,
-)
+);
+
+/*
+ * Used to generate .cell classes, e.g. `.cell--md--4`.
+ * You can increase/decrease these as much as you need.
+ * Higher numbers = larger file size.
+ */
+$maxColumns: 12;
+$maxRows: 12;
