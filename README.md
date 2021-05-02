@@ -59,4 +59,5 @@ npm run storybook
 ```
 
 ## TODO:
+- Add e2e tests.
 - Write documentation in Storybook and readme.
