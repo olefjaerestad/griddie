@@ -1,4 +1,4 @@
-.grid {
+.g {
   // --columns: 12;
   // --rows: 12;
   // --gap-x: 1rem;
@@ -21,23 +21,18 @@
 }
 @each $name, $breakpoint in $breakpoints {
   @media (min-width: $breakpoint) {
-    .grid {
+    .g {
       grid-column-gap: var(--gap-#{$name}-x, var(--use-gap-x));
       grid-row-gap: var(--gap-#{$name}-y, var(--use-gap-y));
     }
   }
 }
 
-.grid--x {
+.g-x {
   grid-template-columns: repeat(var(--use-columns), 1fr);
 }
 
 /* TODO: Handle if child `.cell`s add up to more than --rows */
-.grid--y {
-  grid-template-rows: repeat(var(--use-rows), 1fr);
-}
-
-.grid--xy {
-  grid-template-columns: repeat(var(--use-columns), 1fr);
+.g-y {
   grid-template-rows: repeat(var(--use-rows), 1fr);
 }

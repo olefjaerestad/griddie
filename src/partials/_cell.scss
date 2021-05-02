@@ -1,78 +1,36 @@
-/* .grid--x .cell--6 */
+/* .g-x .c-6 */
+/* .g-x .c-6-x */
 @for $i from 1 through $maxColumns {
-  .grid--x .cell--#{$i} {
+  .g-x .c-#{$i},
+  .g-x .c-#{$i}-x {
     grid-column-end: span $i;
   }
 }
-/* .grid--y .cell--6 */
+/* .g-y .c-6 */
+/* .g-y .c-6-y */
 @for $i from 1 through $maxRows {
-  .grid--y .cell--#{$i} {
+  .g-y .c-#{$i},
+  .g-y .c-#{$i}-y {
     grid-row-end: span $i;
   }
 }
-/* .grid--x .cell--md--6 */
-/* .grid--y .cell--lg--8 */
+/* .g-x .c-md-6 */
+/* .g-x .c-md-6-x */
+/* .g-y .c-lg-8 */
+/* .g-y .c-lg-8-y */
 @each $name, $breakpoint in $breakpoints {
   @for $i from 1 through $maxColumns {
     @media (min-width: $breakpoint) {
-      .grid--x .cell--#{$name}--#{$i} {
+      .g-x .c-#{$name}-#{$i},
+      .g-x .c-#{$name}-#{$i}-x {
         grid-column-end: span $i;
       }
     }
   }
   @for $i from 1 through $maxRows {
     @media (min-width: $breakpoint) {
-      .grid--y .cell--#{$name}--#{$i} {
-        grid-row-end: span $i;
-      }
-    }
-  }
-}
-
-/* .grid--xy .cell--6x */
-@for $i from 1 through $maxColumns {
-  .grid--xy .cell--#{$i}x {
-    grid-column-end: span $i;
-  }
-}
-/* .grid--xy .cell--6y */
-@for $i from 1 through $maxRows {
-  .grid--xy .cell--#{$i}y {
-    grid-row-end: span $i;
-  }
-}
-/* .grid--xy .cell--6 */
-@for $i from 1 through $maxColumns {
-  .grid--xy .cell--#{$i} {
-    grid-column-end: span $i;
-  }
-}
-/* .grid--xy .cell--6 */
-@for $i from 1 through $maxRows {
-  .grid--xy .cell--#{$i} {
-    grid-row-end: span $i;
-  }
-}
-/* .grid--xy .cell--sm--6 */
-/* .grid--xy .cell--md--6x */
-/* .grid--xy .cell--lg--4y */
-@each $name, $breakpoint in $breakpoints {
-  @for $i from 1 through $maxColumns {
-    @media (min-width: $breakpoint) {
-      .grid--xy .cell--#{$name}--#{$i} {
-        grid-column-end: span $i;
-      }
-      .grid--xy .cell--#{$name}--#{$i}x {
-        grid-column-end: span $i;
-      }
-    }
-  }
-  @for $i from 1 through $maxRows {
-    @media (min-width: $breakpoint) {
-      .grid--xy .cell--#{$name}--#{$i} {
-        grid-row-end: span $i;
-      }
-      .grid--xy .cell--#{$name}--#{$i}y {
+      .g-y .c-#{$name}-#{$i},
+      .g-y .c-#{$name}-#{$i}-y {
         grid-row-end: span $i;
       }
     }

@@ -29,12 +29,14 @@ afterEach(async () => {
 });
 
 describe('Basic layout', () => {
-  it('DOM should contain an element with id="app"', async () => {
+  it('DOM should contain grid (.g), cell (.c) and offset (.o) classes', async () => {
     await page.goto(WEBSERVER_URL);
-    const hasGridNode = await page.isVisible('.grid');
-    const hasCellNode = await page.isVisible('.cell');
+    const hasGridNode = await page.isVisible('.g');
+    const hasCellNode = await page.isVisible('.c');
+    const hasOffsetNode = await page.isVisible('[class*="o-"]');
     expect(hasGridNode).toBe(true); // Note: Runtime errors on the page might cause this to fail.
     expect(hasCellNode).toBe(true);
+    expect(hasOffsetNode).toBe(true);
     await page.screenshot({path: `${SCREENSHOTS_PATH}/example.png`});
   });
 });

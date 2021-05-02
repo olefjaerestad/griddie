@@ -1,80 +1,37 @@
-/* .grid--x .offset--4 */
+/* .g-x .o-4 */
+/* .g-x .o-4-x */
 @for $i from 1 through $maxColumns {
-  .grid--x .offset--#{$i} {
+  .g-x .o-#{$i},
+  .g-x .o-#{$i}-x {
     /* This doesn't overwrite `.cell` styling since we're using grid-column-end there. */
     grid-column-start: $i;
   }
 }
-/* .grid--y .offset--6 */
+/* .g-y .o-6 */
+/* .g-y .o-6-y */
 @for $i from 1 through $maxColumns {
-  .grid--y .offset--#{$i} {
+  .g-y .o-#{$i},
+  .g-y .o-#{$i}-y {
     grid-row-start: $i;
   }
 }
-/* .grid--x .offset--md--2 */
-/* .grid--y .offset--lg--8 */
+/* .g-x .o-md-2 */
+/* .g-x .o-md-2-x */
+/* .g-y .o-lg-8 */
+/* .g-y .o-lg-8-y */
 @each $name, $breakpoint in $breakpoints {
   @for $i from 1 through $maxColumns {
     @media (min-width: $breakpoint) {
-      .grid--x .offset--#{$name}--#{$i} {
+      .g-x .o-#{$name}-#{$i},
+      .g-x .o-#{$name}-#{$i}-x {
         grid-column-start: $i;
       }
     }
   }
   @for $i from 1 through $maxRows {
     @media (min-width: $breakpoint) {
-      .grid--y .offset--#{$name}--#{$i} {
-        grid-row-start: $i;
-      }
-    }
-  }
-}
-
-/* .grid--xy .offset--6x */
-@for $i from 1 through $maxColumns {
-  .grid--xy .offset--#{$i}x {
-    grid-column-start: $i;
-  }
-}
-/* .grid--xy .offset--6y */
-@for $i from 1 through $maxRows {
-  .grid--xy .offset--#{$i}y {
-    grid-row-start: $i;
-  }
-}
-/* .grid--xy .offset--6 */
-@for $i from 1 through $maxColumns {
-  .grid--xy .offset--#{$i} {
-    grid-column-start: $i;
-  }
-}
-/* .grid--xy .offset--6 */
-@for $i from 1 through $maxRows {
-  .grid--xy .offset--#{$i} {
-    grid-row-start: $i;
-  }
-}
-
-/* .grid--xy .offset--sm--6 */
-/* .grid--xy .offset--md--6x */
-/* .grid--xy .offset--lg--4y */
-@each $name, $breakpoint in $breakpoints {
-  @for $i from 1 through $maxColumns {
-    @media (min-width: $breakpoint) {
-      .grid--xy .offset--#{$name}--#{$i} {
-        grid-column-start: $i;
-      }
-      .grid--xy .offset--#{$name}--#{$i}x {
-        grid-column-start: $i;
-      }
-    }
-  }
-  @for $i from 1 through $maxRows {
-    @media (min-width: $breakpoint) {
-      .grid--xy .offset--#{$name}--#{$i} {
-        grid-row-start: $i;
-      }
-      .grid--xy .offset--#{$name}--#{$i}y {
+      .g-y .o-#{$name}-#{$i},
+      .g-y .o-#{$name}-#{$i}-y {
         grid-row-start: $i;
       }
     }
