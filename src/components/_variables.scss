@@ -3,10 +3,19 @@
  */
 /*
 .grid {
-   // Overwrite this to change the number of columns in a grid. Should never exceed $maxColumns.
+  // Overwrite this to change the number of columns in a grid. Should never exceed $maxColumns.
    --columns: 12;
-   // Overwrite this to change the number of rows in a grid. Should never exceed $maxRows.
+  // Overwrite this to change the number of rows in a grid. Should never exceed $maxRows.
   --rows: 12;
+  // Horizontal space between columns.
+  --gap-x; 1rem;
+  // Vertical space between rows.
+  --gap-y: 1rem;
+  // Addtionally, based on your $breakpoints, you can use properties in 
+  // the following format to overwrite spacing in specific breakpoints:
+  --gap-sm-x
+  --gap-md-y
+  --gap-lg-x
 }
 */
 
@@ -23,12 +32,12 @@ $breakpoints: (
   'sm': 480px,
   'md': 720px,
   'lg': 960px,
-);
+) !default;
 
 /*
  * Used to generate .cell classes, e.g. `.cell--md--4`.
  * You can increase/decrease these as much as you need.
  * Higher numbers = larger file size.
  */
-$maxColumns: 12;
-$maxRows: 12;
+$maxColumns: 12 !default;
+$maxRows: 12 !default;

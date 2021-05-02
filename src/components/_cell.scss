@@ -1,26 +1,79 @@
-.cell {
-  border: 1px solid rgb(54, 177, 214); /* TODO: Remove */
-}
-
+/* .grid--x .cell--6 */
 @for $i from 1 through $maxColumns {
   .grid--x .cell--#{$i} {
-    grid-column: span $i;
+    grid-column-end: span $i;
   }
 }
+/* .grid--y .cell--6 */
 @for $i from 1 through $maxRows {
   .grid--y .cell--#{$i} {
-    grid-row: span $i;
+    grid-row-end: span $i;
   }
 }
-/* .cell span for different breakpoints: */
+/* .grid--x .cell--md--6 */
+/* .grid--y .cell--lg--8 */
 @each $name, $breakpoint in $breakpoints {
   @for $i from 1 through $maxColumns {
     @media (min-width: $breakpoint) {
       .grid--x .cell--#{$name}--#{$i} {
-        grid-column: span $i;
+        grid-column-end: span $i;
       }
+    }
+  }
+  @for $i from 1 through $maxRows {
+    @media (min-width: $breakpoint) {
       .grid--y .cell--#{$name}--#{$i} {
-        grid-row: span $i;
+        grid-row-end: span $i;
+      }
+    }
+  }
+}
+
+/* .grid--xy .cell--6x */
+@for $i from 1 through $maxColumns {
+  .grid--xy .cell--#{$i}x {
+    grid-column-end: span $i;
+  }
+}
+/* .grid--xy .cell--6y */
+@for $i from 1 through $maxRows {
+  .grid--xy .cell--#{$i}y {
+    grid-row-end: span $i;
+  }
+}
+/* .grid--xy .cell--6 */
+@for $i from 1 through $maxColumns {
+  .grid--xy .cell--#{$i} {
+    grid-column-end: span $i;
+  }
+}
+/* .grid--xy .cell--6 */
+@for $i from 1 through $maxRows {
+  .grid--xy .cell--#{$i} {
+    grid-row-end: span $i;
+  }
+}
+/* .grid--xy .cell--sm--6 */
+/* .grid--xy .cell--md--6x */
+/* .grid--xy .cell--lg--4y */
+@each $name, $breakpoint in $breakpoints {
+  @for $i from 1 through $maxColumns {
+    @media (min-width: $breakpoint) {
+      .grid--xy .cell--#{$name}--#{$i} {
+        grid-column-end: span $i;
+      }
+      .grid--xy .cell--#{$name}--#{$i}x {
+        grid-column-end: span $i;
+      }
+    }
+  }
+  @for $i from 1 through $maxRows {
+    @media (min-width: $breakpoint) {
+      .grid--xy .cell--#{$name}--#{$i} {
+        grid-row-end: span $i;
+      }
+      .grid--xy .cell--#{$name}--#{$i}y {
+        grid-row-end: span $i;
       }
     }
   }

@@ -1,18 +1,43 @@
 .grid {
-  --columns: 12;
-  --rows: 12;
+  // --columns: 12;
+  // --rows: 12;
+  // --gap-x: 1rem;
+  // --gap-y: 1rem;
+  /**
+   * Instead of directly using the `--columns`, `--gap-x` (etc) properties,
+   * we take the fallback approach. This way, the consumer isn't forced to define
+   * e.g. `--columns` on .grid to overwrite defaults. 
+   * The user can instead define e.g. `--columns` on any parent 
+   * element (including :root) and it will apply here.
+   */
+  --use-columns: var(--columns, 12);
+  --use-rows: var(--rows, 12);
+  --use-gap-x: var(--gap-x, 1rem);
+  --use-gap-y: var(--gap-y, 1rem);
 
   display: grid;
-  border: 2px solid palevioletred; /* TODO: Remove */
+  grid-column-gap: var(--use-gap-x);
+  grid-row-gap: var(--use-gap-y);
+}
+@each $name, $breakpoint in $breakpoints {
+  @media (min-width: $breakpoint) {
+    .grid {
+      grid-column-gap: var(--gap-#{$name}-x, var(--use-gap-x));
+      grid-row-gap: var(--gap-#{$name}-y, var(--use-gap-y));
+    }
+  }
 }
 
 .grid--x {
-  grid-template-columns: repeat(var(--columns), 1fr);
+  grid-template-columns: repeat(var(--use-columns), 1fr);
 }
 
 /* TODO: Handle if child `.cell`s add up to more than --rows */
 .grid--y {
-  grid-template-rows: repeat(var(--rows), 1fr);
+  grid-template-rows: repeat(var(--use-rows), 1fr);
 }
 
-/* TODO: Grid XY */
+.grid--xy {
+  grid-template-columns: repeat(var(--use-columns), 1fr);
+  grid-template-rows: repeat(var(--use-rows), 1fr);
+}

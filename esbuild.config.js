@@ -1,4 +1,6 @@
+import csso from 'csso';
 import esBuild from "esbuild";
+import fs from 'fs';
 import path from 'path';
 import sassPlugin from 'esbuild-plugin-sass';
 import { fileURLToPath } from 'url';
@@ -14,7 +16,7 @@ const BUILD_OPTIONS = {
     '__NODE_ENV__': NODE_ENV,
     'process.env.NODE_ENV': NODE_ENV
   },
-  entryPoints: ['src/index.tsx', 'src/style.scss'],
+  entryPoints: IS_PROD ? ['src/style.scss'] : ['src/index.tsx', 'src/style.scss'],
   incremental: !IS_PROD,
   minify: IS_PROD,
   outdir: IS_PROD ? 'build' : 'dev',
@@ -44,7 +46,6 @@ if (IS_DEV) {
       changedFile = 'style.css';
     }
 
-    // @ts-ignore: No overload matches this call.
     esBuild.build(BUILD_OPTIONS)
       .then(() => {
         hmrServer.notifyConnectedClients({
@@ -55,11 +56,22 @@ if (IS_DEV) {
       .catch((e) => console.error(e.message));
   });
 } else {
-  // @ts-ignore: No overload matches this call.
   esBuild.build(BUILD_OPTIONS)
     .then(() => {
-      console.info('Project built successfully');
-      process.exit(0);
+      /** Compress CSS */
+      fs.readFile(path.join('./build/style.css'), 'utf-8', (err, css) => {
+        if (err) throw err;
+        const compressedCss = csso.minify(css, {forceMediaMerge: true}).css;
+        const reduction = (css.length - compressedCss.length) / css.length * 100;
+
+        fs.writeFile(path.join('./build/style.css'), compressedCss, {encoding: 'utf-8'}, () => {
+          console.info(
+            `Project built successfully. CSS minified successfully - ` + 
+            `${Math.round(reduction)}% reduction, from ${css.length}B to ${compressedCss.length}B.`
+          );
+          process.exit(0);
+        });
+      });
     })
     .catch((error) => {
       console.error('Error when building project:', error);
