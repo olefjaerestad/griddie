@@ -16,14 +16,14 @@
   --use-gap-y: var(--gap-y, 1rem);
 
   display: grid;
-  grid-column-gap: var(--use-gap-x);
-  grid-row-gap: var(--use-gap-y);
+  column-gap: var(--use-gap-x);
+  row-gap: var(--use-gap-y);
 }
 @each $name, $breakpoint in $breakpoints {
   @media (min-width: $breakpoint) {
     .g {
-      grid-column-gap: var(--gap-#{$name}-x, var(--use-gap-x));
-      grid-row-gap: var(--gap-#{$name}-y, var(--use-gap-y));
+      column-gap: var(--gap-#{$name}-x, var(--use-gap-x));
+      row-gap: var(--gap-#{$name}-y, var(--use-gap-y));
     }
   }
 }
@@ -32,7 +32,9 @@
   grid-template-columns: repeat(var(--use-columns), 1fr);
 }
 
-/* TODO: Handle if child `.cell`s add up to more than --rows */
 .g-y {
   grid-template-rows: repeat(var(--use-rows), 1fr);
+  &:not(.g-x) {
+    grid-auto-flow: column;
+  }
 }
