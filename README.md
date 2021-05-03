@@ -151,15 +151,15 @@ npm i
 npm run build
 ```
 
-## Build site
-Build a new version of the Griddie website.
+## Build docs
+Build a new version of the Griddie documentation website.
 
 ```sh
 npm i
 ```
 
 ```sh
-npm run build
+npm run build:docs
 ```
 
 ## Testing

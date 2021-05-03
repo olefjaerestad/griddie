@@ -40,15 +40,15 @@
   },
   "scripts": {
     "build": "npm run clean:prod && tsc && NODE_ENV=\"production\" node esbuild.config.js && npm run copy:static:prod",
-    "build:site": "npm run clean:site && npm run create:site && npm run build && npm run build-storybook && cp -a build/. site",
+    "build:docs": "npm run clean:docs && npm run create:docs && npm run build && npm run build-storybook && cp -a build/. docs",
     "clean:dev": "rm -rf dev",
     "clean:prod": "rm -rf build",
-    "clean:site": "rm -rf site",
+    "clean:docs": "rm -rf docs",
     "copy:static:dev": "cp src/index.html dev",
     "copy:static:prod": "cp src/index.html build",
     "create:dev": "mkdir dev",
     "create:prod": "mkdir build",
-    "create:site": "mkdir site",
+    "create:docs": "mkdir docs",
     "dev": "npm run rebuild:static:dev && NODE_ENV=\"development\" concurrently \"node scripts/dev.js\" \"tsc -w\" \"node esbuild.config.js\"",
     "test": "npm run test:unit && npm run test:e2e",
     "test:e2e": "npm run rebuild:static:prod && NODE_ENV=\"production\" node esbuild.config.js && jest e2e",
@@ -57,7 +57,7 @@
     "rebuild:static:dev": "npm run clean:dev && npm run create:dev && npm run copy:static:dev",
     "rebuild:static:prod": "npm run clean:prod && npm run create:prod && npm run copy:static:prod",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o site/storybook"
+    "build-storybook": "build-storybook -o docs/storybook"
   },
   "type": "module",
   "version": "0.0.1"
