@@ -1,8 +1,8 @@
 # Griddie
 Another CSS grid library. That's all.
 
-- [See example markup](https://olefjaerestad.github.io/griddie/)
-- [Interactive Storybook documentation](https://olefjaerestad.github.io/griddie/storybook/index.html)
+- [See example site](https://olefjaerestad.github.io/griddie/)
+- [Interactive Storybook documentation](https://olefjaerestad.github.io/griddie/storybook/)
 
 ## Use
 `npm i @olefjaerestad/griddie`

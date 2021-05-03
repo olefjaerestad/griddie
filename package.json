@@ -43,7 +43,7 @@
   },
   "scripts": {
     "build": "npm run clean:prod && tsc && NODE_ENV=\"production\" node esbuild.config.js && npm run copy:static:prod",
-    "build:docs": "npm run clean:docs && npm run create:docs && npm run build && npm run build-storybook && cp -a build/. docs",
+    "build:docs": "npm run clean:docs && npm run create:docs && npm run build && npm run build-storybook && cp build/index.html docs && cp build/style.css docs",
     "build-storybook": "build-storybook -o docs/storybook",
     "clean:dev": "rm -rf dev",
     "clean:prod": "rm -rf build",
