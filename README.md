@@ -1,6 +1,9 @@
 # Griddie
 Another CSS grid library. That's all.
 
+- [See example markup](./site/index.html)
+- [Interactive Storybook documentation](./site/storybook/index.html)
+
 ## Use
 `npm i @olefjaerestad/griddie`
 
@@ -36,7 +39,7 @@ If you use Sass, you can also import only the functionality you need:
 
 ### Markup
 Griddie uses the concept of grids and cells. A cell must always be a direct child of a grid, 
-and a grid can consist of one or multiple cells. 
+and a grid can consist of zero or more cells. 
 At its simplest, you can add a horizontal grid with cells like this:
 
 ```html
@@ -45,9 +48,6 @@ At its simplest, you can add a horizontal grid with cells like this:
   <div class="c-8">I am a cell with a width of 8 columns.</div>
 </div>
 ```
-
-- [See more comprehensive example markup](./build/index.html)
-- [Interactive Storybook documentation](./storybook-static/index.html)
 
 #### Available classes:
 Grid:
@@ -63,7 +63,7 @@ Cell:
 - `.c-md-6-x`: A cell spanning 6 columns on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 - `.c-md-6-y`: A cell spanning 6 rows on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 
-Cell positioning (aka cell offset). By default, cells will flow naturally. Use these classes to explicitly position them:
+Cell offset (aka cell positioning). By default, cells will flow naturally. Use these classes to explicitly position them:
 - `.o-6`: Use on a cell to force it to start at grid line 6. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 - `.o-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 - `.o-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
@@ -78,9 +78,9 @@ and Griddie will use them. Below is a list of the properties you can use and the
 
 ```css
 .g {
-  /* Overwrite this to change the number of columns in a grid. Should not exceed $maxColumns (see configure with Sass). */
+  /* The number of columns in a grid. Should not exceed $maxColumns (see configure with Sass). */
   --columns: 12;
-  /* Overwrite this to change the number of rows in a grid. Should not exceed $maxRows (see configure with Sass). */
+  /* The number of rows in a grid. Should not exceed $maxRows (see configure with Sass). */
   --rows: 12;
   /* Horizontal space between columns. */
   --gap-x: 1rem;
@@ -116,7 +116,7 @@ $breakpoints: (
 /*
  * Used to generate cell and offset classes, e.g. `.c-4` and `.o-2`.
  * You can increase/decrease these as much as you need.
- * These do not have to be the same. If you for example only want 
+ * These do not have to be the same. For example, if you only need 
  * horizontal grids, you could reduce $maxRows to 1 to reduce file size.
  * Higher numbers = larger file size.
  */
@@ -151,6 +151,17 @@ npm i
 npm run build
 ```
 
+## Build site
+Build a new version of the Griddie website.
+
+```sh
+npm i
+```
+
+```sh
+npm run build
+```
+
 ## Testing
 ```sh
 npm i
@@ -177,7 +188,7 @@ npm run test:e2e
 npm run test
 ```
 
-## Documentation
+## Interactive documentation
 ```sh
 npm run storybook
 ```

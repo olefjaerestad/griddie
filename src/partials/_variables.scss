@@ -3,9 +3,9 @@
  */
 /*
 .g {
-  // Overwrite this to change the number of columns in a grid. Should not exceed $maxColumns.
+  // The number of columns in a grid. Should not exceed $maxColumns.
    --columns: 12;
-  // Overwrite this to change the number of rows in a grid. Should not exceed $maxRows.
+  // The number of rows in a grid. Should not exceed $maxRows.
   --rows: 12;
   // Horizontal space between columns.
   --gap-x: 1rem;
