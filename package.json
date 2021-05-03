@@ -33,7 +33,7 @@
   ],
   "license": "MIT",
   "main": "build/index.css",
-  "name": "griddie",
+  "name": "@olefjaerestad/griddie",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/olefjaerestad/griddie.git"

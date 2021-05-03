@@ -2,17 +2,17 @@
  * CSS custom properties and their default values.
  */
 /*
-.grid {
-  // Overwrite this to change the number of columns in a grid. Should never exceed $maxColumns.
+.g {
+  // Overwrite this to change the number of columns in a grid. Should not exceed $maxColumns.
    --columns: 12;
-  // Overwrite this to change the number of rows in a grid. Should never exceed $maxRows.
+  // Overwrite this to change the number of rows in a grid. Should not exceed $maxRows.
   --rows: 12;
   // Horizontal space between columns.
-  --gap-x; 1rem;
+  --gap-x: 1rem;
   // Vertical space between rows.
   --gap-y: 1rem;
   // Addtionally, based on your $breakpoints, you can use properties in 
-  // the following format to overwrite spacing in specific breakpoints:
+  // the following format to overwrite spacing at specific breakpoints:
   --gap-sm-x
   --gap-md-y
   --gap-lg-x
@@ -24,7 +24,7 @@
  */
 
 /*
- * Used to generate .cell classes, e.g. `.cell--md--4`.
+ * Used to generate cell and offset classes, e.g. `.c-md-4` and `.o-lg-2`.
  * You can add/remove as many breakpoints as you need here.
  * More breakpoints = larger file size.
  */
@@ -35,8 +35,9 @@ $breakpoints: (
 ) !default;
 
 /*
- * Used to generate .cell classes, e.g. `.cell--md--4`.
+ * Used to generate cell and offset classes, e.g. `.c-4` and `.o-2`.
  * You can increase/decrease these as much as you need.
+ * These do not have to be the same.
  * Higher numbers = larger file size.
  */
 $maxColumns: 12 !default;
