@@ -4,10 +4,10 @@ import { createGrid, IGridProps } from './Grid';
 export default {
   title: 'Grid',
   argTypes: {
-    type: {
+    direction: {
       control: {
         type: 'select',
-        options: ['horizontal', 'vertical']
+        options: ['x', 'y', 'xy']
       }
     },
   },
@@ -19,14 +19,19 @@ const Template: Story<IGridProps> = (args) => {
   return createGrid(args);
 };
 
-export const Horizontal = Template.bind({});
-Horizontal.args = {
-  type: 'horizontal',
+export const X = Template.bind({});
+X.args = {
+  direction: 'x',
 };
 
-export const Vertical = Template.bind({});
-Vertical.args = {
-  type: 'vertical',
+export const Y = Template.bind({});
+Y.args = {
+  direction: 'y',
+};
+
+export const XY = Template.bind({});
+XY.args = {
+  direction: 'xy',
 };
 
 export const NoAxis = Template.bind({});

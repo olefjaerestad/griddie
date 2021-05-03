@@ -2,27 +2,45 @@ export interface IGridProps {
   /**
    * Horizontal or vertical?
    */
-  type?: 'horizontal' | 'vertical';
+  direction?: 'x' | 'y' | 'xy';
 }
 
 /**
- * Primary UI component for user interaction
+ * The grid (`.g`) is the top level element in a, well, grid.
+ * A grid can be horizontal (`.g.g-x`), vertical (`.g.g-y`) or both (`.g.g-x.g-y`).
  */
-export const createGrid = ({type}: IGridProps) => {
+export const createGrid = ({direction}: IGridProps) => {
   const grid = document.createElement('div');
 
-  grid.classList.add('grid');
+  grid.classList.add('g');
 
-  if (type === 'horizontal') {
-    grid.classList.add('grid--x');
+  if (direction === 'x') {
+    grid.classList.add('g-x');
   }
-  if (type === 'vertical') {
-    grid.classList.add('grid--y');
+  if (direction === 'y') {
+    grid.classList.add('g-y');
+  }
+  if (direction === 'xy') {
+    grid.classList.add('g-x', 'g-y');
   }
 
   grid.innerHTML = `
-    <div class="cell">I am cell 1</div>
-    <div class="cell">I am cell 2</div>
+    <div class="c c-8">.c.c-8</div>
+    <div class="c c-4">.c.c-4</div>
+    <style>
+      .g,
+      .c {
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .g {
+        border: 1px solid #0bf;
+      }
+      .c {
+        background-color: #eee;
+      }
+    </style>
   `;
 
   return grid;
