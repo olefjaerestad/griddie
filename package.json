@@ -26,6 +26,9 @@
     "sass-loader": "^10.1.1",
     "typescript": "^4.2.2"
   },
+  "files": [
+    "build"
+  ],
   "homepage": "https://github.com/olefjaerestad/griddie#readme",
   "keywords": [
     "css",
@@ -41,23 +44,24 @@
   "scripts": {
     "build": "npm run clean:prod && tsc && NODE_ENV=\"production\" node esbuild.config.js && npm run copy:static:prod",
     "build:docs": "npm run clean:docs && npm run create:docs && npm run build && npm run build-storybook && cp -a build/. docs",
+    "build-storybook": "build-storybook -o docs/storybook",
     "clean:dev": "rm -rf dev",
     "clean:prod": "rm -rf build",
     "clean:docs": "rm -rf docs",
     "copy:static:dev": "cp src/index.html dev",
-    "copy:static:prod": "cp src/index.html build",
+    "copy:static:prod": "cp src/index.html build && cp -a src/partials build",
     "create:dev": "mkdir dev",
     "create:prod": "mkdir build",
     "create:docs": "mkdir docs",
     "dev": "npm run rebuild:static:dev && NODE_ENV=\"development\" concurrently \"node scripts/dev.js\" \"tsc -w\" \"node esbuild.config.js\"",
-    "test": "npm run test:unit && npm run test:e2e",
-    "test:e2e": "npm run rebuild:static:prod && NODE_ENV=\"production\" node esbuild.config.js && jest e2e",
-    "test:unit": "jest src --passWithNoTests",
     "prepare": "husky install",
+    "publish:npm": "npm run build && npm publish --access public",
     "rebuild:static:dev": "npm run clean:dev && npm run create:dev && npm run copy:static:dev",
     "rebuild:static:prod": "npm run clean:prod && npm run create:prod && npm run copy:static:prod",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs/storybook"
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:e2e": "npm run rebuild:static:prod && NODE_ENV=\"production\" node esbuild.config.js && jest e2e",
+    "test:unit": "jest src --passWithNoTests"
   },
   "type": "module",
   "version": "0.0.1"
