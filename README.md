@@ -50,12 +50,12 @@ At its simplest, you can add a horizontal grid with cells like this:
 ```
 
 #### Available classes:
-Grid:
+##### Grid:
 - `.g`: Base grid styling. All grids need this.
 - `.g-x`: Horizontal grid. Can be combined with vertical grid.
 - `.g-y`: Vertical grid. Can be combined with horizontal grid.
 
-Cell:
+##### Cell:
 - `.c-6`: A cell spanning 6 columns or rows, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 - `.c-6-x`: A cell spanning 6 columns, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 - `.c-6-y`: A cell spanning 6 rows, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
@@ -63,7 +63,7 @@ Cell:
 - `.c-md-6-x`: A cell spanning 6 columns on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 - `.c-md-6-y`: A cell spanning 6 rows on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 
-Cell offset (aka cell positioning). By default, cells will flow naturally. Use these classes to explicitly position them:
+##### Cell offset (aka cell positioning). By default, cells will flow naturally. Use these classes to explicitly position them:
 - `.o-6`: Use on a cell to force it to start at grid line 6. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 - `.o-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
 - `.o-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
