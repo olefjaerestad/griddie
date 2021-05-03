@@ -1,8 +1,8 @@
 # Griddie
 Another CSS grid library. That's all.
 
-- [See example markup](./site/index.html)
-- [Interactive Storybook documentation](./site/storybook/index.html)
+- [See example markup](https://olefjaerestad.github.io/griddie/)
+- [Interactive Storybook documentation](https://olefjaerestad.github.io/griddie/storybook/index.html)
 
 ## Use
 `npm i @olefjaerestad/griddie`
@@ -195,5 +195,4 @@ npm run storybook
 
 ## TODO:
 - Add e2e tests.
-- Make sure links to index.html and and storybook in Readme work as expected.
 - Make sure docs are correct after battle testing Griddie.
