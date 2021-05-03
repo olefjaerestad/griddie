@@ -28,7 +28,7 @@ If you use Sass, you can also import only the functionality you need:
 ```scss
 /* style.scss */
 /**
- * If you don't provide Sass variables yourself (see configure with Sass), 
+ * If you don't provide Sass variables yourself (see 'Configure with Sass'), 
  * _variables.scss must always be imported.
  */
 @import '@olefjaerestad/griddie/partials/_variables.scss';
@@ -56,20 +56,20 @@ At its simplest, you can add a horizontal grid with cells like this:
 - `.g-y`: Vertical grid. Can be combined with horizontal grid.
 
 ##### Cell:
-- `.c-6`: A cell spanning 6 columns or rows, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.c-6-x`: A cell spanning 6 columns, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.c-6-y`: A cell spanning 6 rows, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.c-md-6`: A cell spanning 6 columns or rows on medium viewport widths and above, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.c-md-6-x`: A cell spanning 6 columns on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.c-md-6-y`: A cell spanning 6 rows on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
+- `.c-6`: A cell spanning 6 columns or rows, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.c-6-x`: A cell spanning 6 columns, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.c-6-y`: A cell spanning 6 rows, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.c-md-6`: A cell spanning 6 columns or rows on medium viewport widths and above, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.c-md-6-x`: A cell spanning 6 columns on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.c-md-6-y`: A cell spanning 6 rows on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
 
 ##### Cell offset (aka cell positioning). By default, cells will flow naturally. Use these classes to explicitly position them:
-- `.o-6`: Use on a cell to force it to start at grid line 6. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.o-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.o-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.o-md-6`: Use on a cell to force it to start at grid line 6 on medium viewport widths and above. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.o-md-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
-- `.o-md-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see configure with Sass). `6` can be replaced with any number between `1` and `$maxColumns` (see configure with Sass).
+- `.o-6`: Use on a cell to force it to start at grid line 6. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.o-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.o-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.o-md-6`: Use on a cell to force it to start at grid line 6 on medium viewport widths and above. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.o-md-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+- `.o-md-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
 
 ## Configuration
 Griddie uses CSS custom properties, which allow you to configure some of its behaviour. 
@@ -78,17 +78,17 @@ and Griddie will use them. Below is a list of the properties you can use and the
 
 ```css
 .g {
-  /* The number of columns in a grid. Should not exceed $maxColumns (see configure with Sass). */
+  /* The number of columns in a grid. Should not exceed $maxColumns (see 'Configure with Sass'). */
   --columns: 12;
-  /* The number of rows in a grid. Should not exceed $maxRows (see configure with Sass). */
+  /* The number of rows in a grid. Should not exceed $maxRows (see 'Configure with Sass'). */
   --rows: 12;
   /* Horizontal space between columns. */
   --gap-x: 1rem;
   /* Vertical space between rows. */
   --gap-y: 1rem;
   /**
-   * Addtionally, based on your $breakpoints (see configure with Sass), you can use properties in
-   * the following format to overwrite spacing at specific breakpoints: 
+   * Addtionally, based on your $breakpoints (see 'Configure with Sass'), you can use properties in
+   * the following format to overwrite spacing at specific breakpoints. These have no default values: 
    */
   --gap-sm-x
   --gap-md-y
