@@ -89,7 +89,7 @@ and a grid can consist of zero or more cells.
 At its simplest, you can add a horizontal grid with cells like this:
 
 ```html
-<div class="g g-x">
+<div class="g-x">
   <div class="c-4">I am a cell with a width of 4 columns.</div>
   <div class="c-8">I am a cell with a width of 8 columns.</div>
 </div>
@@ -97,7 +97,6 @@ At its simplest, you can add a horizontal grid with cells like this:
 
 ### <span id="use-available-classes">Available classes</span>
 #### <span id="use-available-classes-grid">Grid</span>
-- `.g`: Base grid styling. All grids need this.
 - `.g-x`: Horizontal grid. Can be combined with vertical grid.
 - `.g-y`: Vertical grid. Can be combined with horizontal grid.
 
@@ -123,11 +122,12 @@ By default, cells will flow naturally. Use these classes to explicitly position 
 
 ## <span id="configuration">Configuration</span>
 Griddie uses CSS custom properties, which allow you to configure some of its behaviour. 
-The properties can be defined on any parent element of `.g` (including the `.g` itself and :root) 
+The properties can be defined on any parent element of `.g-x` or `.g-y` (including itself and :root) 
 and Griddie will use them. Below is a list of the properties you can use and their default values.
 
 ```css
-.g {
+.g-x,
+.g-y {
   /* The number of columns in a grid. Should not exceed $maxColumns (see 'Configure with Sass'). */
   --columns: 12;
   /* The number of rows in a grid. Should not exceed $maxRows (see 'Configure with Sass'). */
@@ -167,7 +167,7 @@ $breakpoints: (
  * Used to generate cell and offset classes, e.g. `.c-4` and `.o-2`.
  * You can increase/decrease these as much as you need.
  * These do not have to be the same. For example, if you only need 
- * horizontal grids, you could reduce $maxRows to 1 to reduce file size.
+ * horizontal grids, you could reduce $maxRows to 0 to reduce file size.
  * Higher numbers = larger file size.
  */
 $maxColumns: 12;

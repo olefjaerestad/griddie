@@ -1,18 +1,22 @@
 /* .g-x .o-4 */
 /* .o-4-x */
-@for $i from 1 through $maxColumns {
-  .g-x .o-#{$i},
-  .o-#{$i}-x {
-    /* This doesn't overwrite `.cell` styling since we're using grid-column-end there. */
-    grid-column-start: $i;
+@if ($maxColumns > 0) {
+  @for $i from 1 through $maxColumns {
+    .g-x .o-#{$i},
+    .o-#{$i}-x {
+      /* This doesn't overwrite `.cell` styling since we're using grid-column-end there. */
+      grid-column-start: $i;
+    }
   }
 }
 /* .g-y .o-6 */
 /* .o-6-y */
-@for $i from 1 through $maxColumns {
-  .g-y .o-#{$i},
-  .o-#{$i}-y {
-    grid-row-start: $i;
+@if ($maxRows > 0) {
+  @for $i from 1 through $maxRows {
+    .g-y .o-#{$i},
+    .o-#{$i}-y {
+      grid-row-start: $i;
+    }
   }
 }
 /* .g-x .o-md-2 */
@@ -20,19 +24,23 @@
 /* .g-y .o-lg-8 */
 /* .o-lg-8-y */
 @each $name, $breakpoint in $breakpoints {
-  @for $i from 1 through $maxColumns {
-    @media (min-width: $breakpoint) {
-      .g-x .o-#{$name}-#{$i},
-      .o-#{$name}-#{$i}-x {
-        grid-column-start: $i;
+  @if ($maxColumns > 0) {
+    @for $i from 1 through $maxColumns {
+      @media (min-width: $breakpoint) {
+        .g-x .o-#{$name}-#{$i},
+        .o-#{$name}-#{$i}-x {
+          grid-column-start: $i;
+        }
       }
     }
   }
-  @for $i from 1 through $maxRows {
-    @media (min-width: $breakpoint) {
-      .g-y .o-#{$name}-#{$i},
-      .o-#{$name}-#{$i}-y {
-        grid-row-start: $i;
+  @if ($maxRows > 0) {
+    @for $i from 1 through $maxRows {
+      @media (min-width: $breakpoint) {
+        .g-y .o-#{$name}-#{$i},
+        .o-#{$name}-#{$i}-y {
+          grid-row-start: $i;
+        }
       }
     }
   }

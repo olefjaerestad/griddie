@@ -25,8 +25,8 @@ export const createGrid = ({direction}: IGridProps) => {
   }
 
   grid.innerHTML = `
-    <div class="c c-8">.c.c-8</div>
-    <div class="c c-4">.c.c-4</div>
+    <div class="c c-8">.c-8</div>
+    <div class="c c-4">.c-4</div>
     <style>
       .g,
       .c {

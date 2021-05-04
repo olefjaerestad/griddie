@@ -59,7 +59,7 @@ export const createGridWithCells = ({direction, offset, responsive, size}: ICell
     }
   }
 
-  cell1.innerText = '.' + cell1.classList.value.replace(/ /g, '.');
+  cell1.innerText = cell1.classList.value.replace(/ /g, '.').substring(1);
 
   const cell2 = cell1.cloneNode(true);
 

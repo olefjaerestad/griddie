@@ -27,6 +27,30 @@
     .c {
       background-color: #eee;
     }
+    .g .c:nth-of-type(8n+1) {
+      background-color: hsla(0deg, 100%, 50%, .3);
+    }
+    .g .c:nth-of-type(8n+2) {
+      background-color: hsla(45deg, 100%, 50%, .3);
+    }
+    .g .c:nth-of-type(8n+3) {
+      background-color: hsla(90deg, 100%, 50%, .3);
+    }
+    .g .c:nth-of-type(8n+4) {
+      background-color: hsla(135deg, 100%, 50%, .3);
+    }
+    .g .c:nth-of-type(8n+5) {
+      background-color: hsla(180deg, 100%, 50%, .3);
+    }
+    .g .c:nth-of-type(8n+6) {
+      background-color: hsla(225deg, 100%, 50%, .3);
+    }
+    .g .c:nth-of-type(8n+7) {
+      background-color: hsla(270deg, 100%, 50%, .3);
+    }
+    .g .c:nth-of-type(8n+8) {
+      background-color: hsla(315deg, 100%, 50%, .3);
+    }
   </style>
 </head>
 <body>
@@ -42,9 +66,9 @@
     <li>Overflowing cells will be placed on next row.</li>
   </ul>
   <div class="g g-x">
-    <div class="c c-8 c-sm-6 c-md-4 c-lg-2" style="background-color: hsla(0deg, 100%, 50%, .3);">.c.c-8.c-sm-6.c-md-4.c-lg-2</div>
-    <div class="c c-4" style="background-color: hsla(45deg, 100%, 50%, .3);">.c.c-4</div>
-    <div class="c c-9" style="background-color: hsla(90deg, 100%, 50%, .3);">.c.c-9</div>
+    <div class="c c-8 c-sm-6 c-md-4 c-lg-2">.c-8.c-sm-6.c-md-4.c-lg-2</div>
+    <div class="c c-4">.c-4</div>
+    <div class="c c-9">.c-9</div>
   </div>
 
   <h2>Grid Y</h2>
@@ -52,9 +76,9 @@
     <li>Overflowing cells will be placed in next column.</li>
   </ul>
   <div class="g g-y">
-    <div class="c c-8 c-sm-6 c-md-4 c-lg-2" style="background-color: hsla(0deg, 100%, 50%, .3);">.c.c-8.c-sm-6.c-md-4.c-lg-2</div>
-    <div class="c c-4" style="background-color: hsla(45deg, 100%, 50%, .3);">.c.c-4</div>
-    <div class="c c-9" style="background-color: hsla(90deg, 100%, 50%, .3);">.c.c-9</div>
+    <div class="c c-8 c-sm-6 c-md-4 c-lg-2">.c-8.c-sm-6.c-md-4.c-lg-2</div>
+    <div class="c c-4">.c-4</div>
+    <div class="c c-9">.c-9</div>
   </div>
 
   <h2>Grid XY</h2>
@@ -63,14 +87,14 @@
     <li>Overflowing cells will be placed on next available row.</li>
   </ul>
   <div class="g g-x g-y">
-    <div class="c c-8 c-sm-6 c-md-4 c-lg-2" style="background-color: hsla(0deg, 100%, 50%, .3);">.c.c-8.c-sm-6.c-md-4.c-lg-2</div>
-    <div class="c c-4" style="background-color: hsla(45deg, 100%, 50%, .3);">.c.c-4</div>
-    <div class="c c-8-x c-sm-6-x c-md-4-x c-lg-2-x" style="background-color: hsla(90deg, 100%, 50%, .3);">.c.c-8-x.c-sm-6-x.c-md-4-x.c-lg-2-x</div>
-    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y" style="background-color: hsla(135deg, 100%, 50%, .3);">.c.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
-    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y" style="background-color: hsla(180deg, 100%, 50%, .3);">.c.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
-    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y" style="background-color: hsla(225deg, 100%, 50%, .3);">.c.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
-    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y" style="background-color: hsla(270deg, 100%, 50%, .3);">.c.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
-    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y" style="background-color: hsla(315deg, 100%, 50%, .3);">.c.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
+    <div class="c c-8 c-sm-6 c-md-4 c-lg-2">.c-8.c-sm-6.c-md-4.c-lg-2</div>
+    <div class="c c-4">.c-4</div>
+    <div class="c c-8-x c-sm-6-x c-md-4-x c-lg-2-x">.c-8-x.c-sm-6-x.c-md-4-x.c-lg-2-x</div>
+    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y">.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
+    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y">.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
+    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y">.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
+    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y">.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
+    <div class="c c-4-y c-sm-6-y c-md-8-y c-lg-10-y">.c-4-y.c-sm-6-y.c-md-8-y.c-lg-10-y</div>
   </div>
 
   <h2>Offset cells in grid X</h2>
@@ -78,7 +102,7 @@
     <li>Place cells at a given grid line offset along the x axis.</li>
   </ul>
   <div class="g g-x">
-    <div class="c c-3 o-2 o-sm-3 o-md-4 o-lg-5" style="background-color: hsla(0deg, 100%, 50%, .3);">.c.c-3.o-2.o-sm-3.o-md-4.o-lg-5</div>
+    <div class="c c-3 o-2 o-sm-3 o-md-4 o-lg-5">.c-3.o-2.o-sm-3.o-md-4.o-lg-5</div>
   </div>
 
   <h2>Offset cells in grid Y</h2>
@@ -86,7 +110,7 @@
     <li>Place cells at a given grid line offset along the y axis.</li>
   </ul>
   <div class="g g-y">
-    <div class="c c-3 o-2 o-sm-3 o-md-4 o-lg-5" style="background-color: hsla(0deg, 100%, 50%, .3);">.c.c-3.o-2.o-sm-3.o-md-4.o-lg-5</div>
+    <div class="c c-3 o-2 o-sm-3 o-md-4 o-lg-5">.c-3.o-2.o-sm-3.o-md-4.o-lg-5</div>
   </div>
 
   <h2>Offset cells in grid XY</h2>
@@ -94,9 +118,9 @@
     <li>Place cells at a given grid line offset along the x or y axis, or both.</li>
   </ul>
   <div class="g g-x g-y">
-    <div class="c c-3 o-2 o-sm-3 o-md-4 o-lg-5" style="background-color: hsla(0deg, 100%, 50%, .3);">.c.c-3.o-2.o-sm-3.o-md-4.o-lg-5</div>
-    <div class="c c-3 o-2-x o-sm-3-x o-md-4-x o-lg-5-x" style="background-color: hsla(45deg, 100%, 50%, .3);">.c.c-3 o-2-x o-sm-3-x o-md-4-x o-lg-5-x</div>
-    <div class="c c-3 o-2-y o-sm-3-y o-md-4-y o-lg-5-y" style="background-color: hsla(90deg, 100%, 50%, .3);">.c.c-3 o-2-y o-sm-3-y o-md-4-y o-lg-5-y</div>
+    <div class="c c-3 o-2 o-sm-3 o-md-4 o-lg-5">.c-3.o-2.o-sm-3.o-md-4.o-lg-5</div>
+    <div class="c c-3 o-2-x o-sm-3-x o-md-4-x o-lg-5-x">.c-3 o-2-x o-sm-3-x o-md-4-x o-lg-5-x</div>
+    <div class="c c-3 o-2-y o-sm-3-y o-md-4-y o-lg-5-y">.c-3 o-2-y o-sm-3-y o-md-4-y o-lg-5-y</div>
   </div>
 
   <h2>Nested grids</h2>
@@ -104,10 +128,10 @@
     <li>You can nest grids infinitely.</li>
   </ul>
   <div class="g g-x">
-    <div class="c c-8" style="background-color: hsla(0deg, 100%, 50%, .3);">
+    <div class="c c-8">
       <div class="g g-x">
-        <div class="c c-8" style="background-color: hsla(45deg, 100%, 50%, .3);">.c.c-8</div>
-        <div class="c c-4" style="background-color: hsla(90deg, 100%, 50%, .3);">.c.c-4</div>
+        <div class="c c-8">.c-8</div>
+        <div class="c c-4">.c-4</div>
       </div>
     </div>
   </div>
@@ -117,20 +141,20 @@
     <li>Using the offset functionality, cells can be placed to overlap each other in Grid X, Y and XY.</li>
   </ul>
   <div class="g g-x">
-    <div class="c c-8 o-2-x o-2-y" style="text-align: right; background-color: hsla(0deg, 100%, 50%, .3);">.c.c-8.o-2-x.o-2-y</div>
-    <div class="c c-4 o-2-x o-2-y" style="background-color: hsla(45deg, 100%, 50%, .3);">.c.c-4.o-2-x.o-2-y</div>
+    <div class="c c-8 o-2-x o-2-y" style="text-align: right;">.c-8.o-2-x.o-2-y</div>
+    <div class="c c-4 o-2-x o-2-y">.c-4.o-2-x.o-2-y</div>
   </div>
   <br />
   <div class="g g-y">
-    <div class="c c-8 o-2-x o-2-y" style="background-color: hsla(0deg, 100%, 50%, .3); display: flex; align-items: flex-end;">.c.c-8.o-2-x.o-2-y</div>
-    <div class="c c-4 o-2-x o-2-y" style="background-color: hsla(45deg, 100%, 50%, .3);">.c.c-4.o-2-x.o-2-y</div>
+    <div class="c c-8 o-2-x o-2-y" style="display: flex; align-items: flex-end;">.c-8.o-2-x.o-2-y</div>
+    <div class="c c-4 o-2-x o-2-y">.c-4.o-2-x.o-2-y</div>
   </div>
   <br />
   <div class="g g-x g-y">
-    <div class="c c-8 o-2-x o-2-y" style="text-align: right; background-color: hsla(0deg, 100%, 50%, .3);">.c.c-8.o-2-x.o-2-y</div>
-    <div class="c c-4 o-2-x o-2-y" style="background-color: hsla(45deg, 100%, 50%, .3);">.c.c-4.o-2-x.o-2-y</div>
-    <div class="c c-8 o-5" style="text-align: right; background-color: hsla(90deg, 100%, 50%, .3);">.c.c-8.o-5</div>
-    <div class="c c-4 o-5" style="background-color: hsla(135deg, 100%, 50%, .3);">.c.c-4.o-5</div>
+    <div class="c c-8 o-2-x o-2-y" style="text-align: right;">.c-8.o-2-x.o-2-y</div>
+    <div class="c c-4 o-2-x o-2-y">.c-4.o-2-x.o-2-y</div>
+    <div class="c c-8 o-5" style="text-align: right;">.c-8.o-5</div>
+    <div class="c c-4 o-5">.c-4.o-5</div>
   </div>
 </body>
 </html>

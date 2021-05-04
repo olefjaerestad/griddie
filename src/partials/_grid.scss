@@ -1,4 +1,4 @@
-.g {
+%g {
   // --columns: 12;
   // --rows: 12;
   // --gap-x: 1rem;
@@ -21,7 +21,7 @@
 }
 @each $name, $breakpoint in $breakpoints {
   @media (min-width: $breakpoint) {
-    .g {
+    %g {
       column-gap: var(--gap-#{$name}-x, var(--use-gap-x));
       row-gap: var(--gap-#{$name}-y, var(--use-gap-y));
     }
@@ -29,10 +29,12 @@
 }
 
 .g-x {
+  @extend %g;
   grid-template-columns: repeat(var(--use-columns), 1fr);
 }
 
 .g-y {
+  @extend %g;
   grid-template-rows: repeat(var(--use-rows), 1fr);
   &:not(.g-x) {
     grid-auto-flow: column;

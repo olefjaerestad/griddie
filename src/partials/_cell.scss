@@ -1,17 +1,21 @@
 /* .g-x .c-6 */
 /* .g-x .c-6-x */
-@for $i from 1 through $maxColumns {
-  .g-x .c-#{$i},
-  .g-x .c-#{$i}-x {
-    grid-column-end: span $i;
+@if ($maxColumns > 0) {
+  @for $i from 1 through $maxColumns {
+    .g-x .c-#{$i},
+    .g-x .c-#{$i}-x {
+      grid-column-end: span $i;
+    }
   }
 }
 /* .g-y .c-6 */
 /* .g-y .c-6-y */
-@for $i from 1 through $maxRows {
-  .g-y .c-#{$i},
-  .g-y .c-#{$i}-y {
-    grid-row-end: span $i;
+@if ($maxRows > 0) {
+  @for $i from 1 through $maxRows {
+    .g-y .c-#{$i},
+    .g-y .c-#{$i}-y {
+      grid-row-end: span $i;
+    }
   }
 }
 /* .g-x .c-md-6 */
@@ -19,19 +23,23 @@
 /* .g-y .c-lg-8 */
 /* .g-y .c-lg-8-y */
 @each $name, $breakpoint in $breakpoints {
-  @for $i from 1 through $maxColumns {
-    @media (min-width: $breakpoint) {
-      .g-x .c-#{$name}-#{$i},
-      .g-x .c-#{$name}-#{$i}-x {
-        grid-column-end: span $i;
+  @if ($maxColumns > 0) {
+    @for $i from 1 through $maxColumns {
+      @media (min-width: $breakpoint) {
+        .g-x .c-#{$name}-#{$i},
+        .g-x .c-#{$name}-#{$i}-x {
+          grid-column-end: span $i;
+        }
       }
     }
   }
-  @for $i from 1 through $maxRows {
-    @media (min-width: $breakpoint) {
-      .g-y .c-#{$name}-#{$i},
-      .g-y .c-#{$name}-#{$i}-y {
-        grid-row-end: span $i;
+  @if ($maxRows > 0) {
+    @for $i from 1 through $maxRows {
+      @media (min-width: $breakpoint) {
+        .g-y .c-#{$name}-#{$i},
+        .g-y .c-#{$name}-#{$i}-y {
+          grid-row-end: span $i;
+        }
       }
     }
   }
