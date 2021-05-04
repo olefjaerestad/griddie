@@ -27,7 +27,9 @@
     "typescript": "^4.2.2"
   },
   "files": [
-    "build"
+    "build/style.css",
+    "build/style.scss",
+    "build/partials"
   ],
   "homepage": "https://github.com/olefjaerestad/griddie#readme",
   "keywords": [
@@ -35,7 +37,7 @@
     "grid"
   ],
   "license": "MIT",
-  "main": "build/index.css",
+  "main": "build/style.css",
   "name": "@olefjaerestad/griddie",
   "repository": {
     "type": "git",
@@ -49,7 +51,7 @@
     "clean:prod": "rm -rf build",
     "clean:docs": "rm -rf docs",
     "copy:static:dev": "cp src/index.html dev",
-    "copy:static:prod": "cp src/index.html build && cp -a src/partials build",
+    "copy:static:prod": "cp src/index.html build && cp src/style.scss build && cp -a src/partials build",
     "create:dev": "mkdir dev",
     "create:prod": "mkdir build",
     "create:docs": "mkdir docs",
@@ -63,6 +65,7 @@
     "test:e2e": "npm run rebuild:static:prod && NODE_ENV=\"production\" node esbuild.config.js && jest e2e",
     "test:unit": "jest src --passWithNoTests"
   },
+  "style": "build/style.css",
   "type": "module",
-  "version": "0.0.1"
+  "version": "0.0.2"
 }

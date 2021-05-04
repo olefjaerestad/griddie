@@ -4,40 +4,86 @@ Another CSS grid library. That's all.
 - [See example site](https://olefjaerestad.github.io/griddie/)
 - [Interactive Storybook documentation](https://olefjaerestad.github.io/griddie/storybook/)
 
-## Use
+## Table of contents
+- [Use](#use)
+- [Configuration](#configuration)
+- [Browser support](#browser-support)
+- [Dev](#dev)
+- [Todo](#todo)
+
+## <span id="use">Use</span>
 `npm i @olefjaerestad/griddie`
 
-### Add the CSS
+The package structure looks like this:
 
+<pre>
+<code>
+├─ build
+   ├─ style.css     The full library. Compiled and minified with default settings.
+   ├─ style.scss    The full library. Can be configured with custom options. See 'Configure with Sass'.
+   ├─ partials      You can import only the functionality you need from here. style.css/style.scss use all these.
+      ├─ _cell.scss
+      ├─ _grid.scss
+      ├─ _offset.scss
+      ├─ _variables.scss
+</code>
+</pre>
+
+> How to import the files into your project will depend on which bundler, if any, you're using. See [Use with vanilla CSS](#use-vanilla-css) and [Use with Scss/Sass](#use-scss-sass) for examples of common patterns.
+
+### <span id="use-vanilla-css">Vanilla CSS</span>
 Without bundler:
 
 ```css
 /* style.css */
+
 @import './node_modules/@olefjaerestad/griddie/build/style.css';
 ```
 
-With bundler:
+With a bundler that supports importing CSS from node_modules,
+the import statement should probably look something like this
+(depending on the bundler configuration):
 
 ```css
 /* style.css */
+
+@import '~@olefjaerestad/griddie/build/style.css';
+/* or */
+@import '@olefjaerestad/griddie/build/style.css';
+/* or */
+@import '~@olefjaerestad/griddie';
+/* or maybe even */
 @import '@olefjaerestad/griddie';
 ```
 
-If you use Sass, you can also import only the functionality you need:
+### <span id="use-scss-sass">Scss/Sass</span>
+If you use Sass, you probably want to import the Sass version of Griddie:
 
 ```scss
 /* style.scss */
+
+@import '@olefjaerestad/griddie/build/style.scss';
+```
+
+Using Sass, you can choose to import only the functionality you need:
+
+```scss
+/* style.scss */
+
 /**
+ * Variables must be defined before importing the other partials.
  * If you don't provide Sass variables yourself (see 'Configure with Sass'), 
  * _variables.scss must always be imported.
  */
-@import '@olefjaerestad/griddie/partials/_variables.scss';
-@import '@olefjaerestad/griddie/partials/_grid.scss';
-@import '@olefjaerestad/griddie/partials/_cell.scss';
-@import '@olefjaerestad/griddie/partials/_offset.scss';
+@import '@olefjaerestad/griddie/build/partials/_variables.scss';
+@import '@olefjaerestad/griddie/build/partials/_grid.scss';
+@import '@olefjaerestad/griddie/build/partials/_cell.scss';
+@import '@olefjaerestad/griddie/build/partials/_offset.scss';
 ```
 
-### Markup
+> If you use Sass, you can configure the variables used by Griddie. See [Configure with Sass](#configure-with-sass).
+
+### <span id="use-markup">Markup</span>
 Griddie uses the concept of grids and cells. A cell must always be a direct child of a grid, 
 and a grid can consist of zero or more cells. 
 At its simplest, you can add a horizontal grid with cells like this:
@@ -49,29 +95,33 @@ At its simplest, you can add a horizontal grid with cells like this:
 </div>
 ```
 
-#### Available classes:
-##### Grid:
+### <span id="use-available-classes">Available classes</span>
+#### <span id="use-available-classes-grid">Grid</span>
 - `.g`: Base grid styling. All grids need this.
 - `.g-x`: Horizontal grid. Can be combined with vertical grid.
 - `.g-y`: Vertical grid. Can be combined with horizontal grid.
 
-##### Cell:
-- `.c-6`: A cell spanning 6 columns or rows, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.c-6-x`: A cell spanning 6 columns, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.c-6-y`: A cell spanning 6 rows, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.c-md-6`: A cell spanning 6 columns or rows on medium viewport widths and above, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.c-md-6-x`: A cell spanning 6 columns on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.c-md-6-y`: A cell spanning 6 rows on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+#### <span id="use-available-classes-cell">Cell</span>
+- `.c-6`: A cell spanning 6 columns or rows, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows.
+- `.c-6-x`: A cell spanning 6 columns, independently of whether parent grid is horizontal or vertical or both.
+- `.c-6-y`: A cell spanning 6 rows, independently of whether parent grid is horizontal or vertical or both.
+- `.c-md-6`: A cell spanning 6 columns or rows on medium viewport widths and above, depending on whether parent grid is horizontal or vertical. If parent grid is both horizontal and vertical, the cell spans both 6 columns and rows.
+- `.c-md-6-x`: A cell spanning 6 columns on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both..
+- `.c-md-6-y`: A cell spanning 6 rows on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both.
 
-##### Cell offset (aka cell positioning). By default, cells will flow naturally. Use these classes to explicitly position them:
-- `.o-6`: Use on a cell to force it to start at grid line 6. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.o-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.o-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis, independently of whether parent grid is horizontal or vertical or both. `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.o-md-6`: Use on a cell to force it to start at grid line 6 on medium viewport widths and above. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.o-md-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
-- `.o-md-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both. `md` can be replaced with any key in `$breakpoints` (see 'Configure with Sass'). `6` can be replaced with any number between `1` and `$maxColumns` (see 'Configure with Sass').
+#### <span id="use-available-classes-celloffset">Cell offset (aka cell positioning)</span>
+By default, cells will flow naturally. Use these classes to explicitly position them.
 
-## Configuration
+- `.o-6`: Use on a cell to force it to start at grid line 6. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically.
+- `.o-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis, independently of whether parent grid is horizontal or vertical or both.
+- `.o-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis, independently of whether parent grid is horizontal or vertical or both.
+- `.o-md-6`: Use on a cell to force it to start at grid line 6 on medium viewport widths and above. If parent grid is horizontal, this will offset the element horizontally. If parent grid is vertical, the element will be offset vertically. If parent grid is both horizontal and vertical, the element will be offset both horizontally and vertically.
+- `.o-md-6-x`: Use on a cell to force it to start at grid line 6 in the horizontal axis on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both.
+- `.o-md-6-y`: Use on a cell to force it to start at grid line 6 in the vertical axis on medium viewport widths and above, independently of whether parent grid is horizontal or vertical or both.
+
+> In the examples above, `md` can be replaced with any key in `$breakpoints`. `6` can be replaced with any number between `1` and `$maxColumns`. See [Configure with Sass](#configure-with-sass) for more info.
+
+## <span id="configuration">Configuration</span>
 Griddie uses CSS custom properties, which allow you to configure some of its behaviour. 
 The properties can be defined on any parent element of `.g` (including the `.g` itself and :root) 
 and Griddie will use them. Below is a list of the properties you can use and their default values.
@@ -96,9 +146,9 @@ and Griddie will use them. Below is a list of the properties you can use and the
 }
 ```
 
-### Configure with Sass
-If you're using Sass, you can configure additional variables/options by 
-defining these before you include the Griddie CSS. 
+### <span id="configure-with-sass">Configure with Sass</span>
+If you're using the Sass version of Griddie, you can configure additional 
+variables/options by defining these before you [import the Griddie CSS](#use-scss-sass). 
 Below is a list of these variables and their default values:
 
 ```scss
@@ -124,7 +174,23 @@ $maxColumns: 12;
 $maxRows: 12;
 ```
 
-## Dev
+## <span id="browser-support">Browser support</span>
+| Browser                  | Supported? |
+| :--                      | :--        |
+| Chrome >= 66             | ✅         |
+| Edge >= 16               | ✅         |
+| Firefox >= 61            | ✅         |
+| Internet Explorer        | ❌         |
+| Opera >= 53              | ✅         |
+| Safari >= 12.1           | ✅         |
+| Chrome for Android > 66  | ✅         |
+| Firefox for Android > 61 | ✅         |
+| Opera for Android > 47   | ✅         |
+| Safari for iOS > 12      | ✅         |
+
+## <span id="dev">Dev</span>
+If you want to work with the source code, all you need to do is:
+
 ```sh
 npm i
 ```
@@ -135,14 +201,14 @@ npm run dev
 
 > Tests will run on commit. If any of the tests fail, the commit will fail. To bypass, pass `--no-verify`. Example: `git commit -m "WIP" --no-verify`.
 
-## Tech stack
+### <span id="tech-stack">Tech stack</span>
 - Bundling: [esbuild](https://esbuild.github.io/)
 - Dev server: [fastify](https://www.fastify.io/)
 - Hot reloading: [@olefjaerestad/hmr](https://www.npmjs.com/package/@olefjaerestad/hmr)
 - Testing: [Jest](https://jestjs.io/en/) and [Playwright](https://playwright.dev/)
 - Documentation: [Storybook](https://storybook.js.org/)
 
-## Build for prod
+### <span id="build-for-prod">Build for prod</span>
 ```sh
 npm i
 ```
@@ -151,7 +217,7 @@ npm i
 npm run build
 ```
 
-## Build docs
+### <span id="build-docs">Build docs</span>
 Build a new version of the Griddie documentation website.
 
 ```sh
@@ -162,12 +228,12 @@ npm i
 npm run build:docs
 ```
 
-## Testing
+### <span id="testing">Testing</span>
 ```sh
 npm i
 ```
 
-### Unit tests
+#### <span id="unit-tests">Unit tests</span>
 ```sh
 npm run test:unit
 ```
@@ -178,21 +244,20 @@ Watch mode:
 npm run test:unit -- --watch
 ```
 
-### E2E (End-To-End) tests
+#### <span id="e2e-tests">E2E (End-To-End) tests</span>
 ```sh
 npm run test:e2e
 ```
 
-### All tests
+#### <span id="all-tests">All tests</span>
 ```sh
 npm run test
 ```
 
-## Interactive documentation
+### <span id="interactive-documentation">Interactive documentation</span>
 ```sh
 npm run storybook
 ```
 
-## TODO:
+## <span id="todo">TODO:</span>
 - Add e2e tests.
-- Make sure docs are correct after battle testing Griddie.
